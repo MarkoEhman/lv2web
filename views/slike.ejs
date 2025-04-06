@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="hr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galerija slika s lightbox funkcionalnosti bez JavaScripta">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="styles/style_slike.css">
+</head>
+<body>
+    <header>
+        <h1>Galerija slika</h1>
+    </header>
+    <nav class="side-nav" aria-label="Glavna navigacija">
+        <button class="dropdown-btn">Menu ▼</button>
+        <ul class="dropdown-content">
+            <li><a href="/">Početna</a></li>
+            <li><a href="/gallery">Galerija</a></li>
+            <li><a href="../files/grafikon.html">Grafikon</a></li>
+        </ul>
+    </nav>
+    <section class="galerija"> 
+        <% for(let i = 1; i <= 16; i++) { %>
+            <figure class="galerija_slika">
+                <a href="#slika<%= i %>">
+                    <img src="https://unsplash.it/300/200?random=<%= i %>" alt="Slika <%= i %>" loading="lazy">
+                </a>
+                <figcaption>Slika <%= i %></figcaption>
+            </figure>
+        <% } %>
+
+        <% for(let i = 1; i <= 16; i++) { %>
+            <section class="lightbox" id="slika<%= i %>">
+                <a href="#" class="close">×</a>
+                <section class="lightbox-content">
+                    <img src="https://unsplash.it/1200/800?random=<%= i %>" alt="Slika <%= i %>">
+                    <p>Slika <%= i %></p>
+                </section>
+            </section>
+        <% } %>
+    </section>
+</body>
+</html>
