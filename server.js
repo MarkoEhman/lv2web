@@ -15,7 +15,17 @@ app.get('/', (req, res) => {
 
 app.get('/gallery', (req, res) => {
     const dataPath = path.join(__dirname, 'images.json');
-    res.render('slike', { title: 'Galerija slika' });
+    try {
+        const images = JSON.parse(fs.readFileSync(dataPath));
+        console.log('Images loaded:', images);
+        res.render('slike', {
+            title: 'Galerija slika',
+            images: images
+        });
+    } catch (error) {
+        console.error('Error loading images:', error);
+        res.status(500).send('Error loading images');
+    }
 });
 
 app.listen(PORT, () => {

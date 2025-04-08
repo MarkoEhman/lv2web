@@ -20,6 +20,29 @@
         </ul>
     </nav>
     <section class="galerija"> 
+        <section class="galerija"> 
+            <h1>Galerija slika</h1>
+            <section class="gallery">
+                <% images.forEach(image => { %>
+                    <figure class="galerija_slika">
+                        <a href="#slika-<%= image.id || images.indexOf(image) %>">
+                            <img src="<%= image.url %>" alt="<%= image.title %>" loading="lazy">
+                        </a>
+                        <figcaption><%= image.title %></figcaption>
+                    </figure>
+                <% }); %>
+            </section>
+    
+            <% images.forEach((image, index) => { %>
+                <section class="lightbox" id="slika-<%= image.id || index %>">
+                    <a href="#" class="close">×</a>
+                    <section class="lightbox-content">
+                        <img src="<%= image.url %>" alt="<%= image.title %>">
+                        <p><%= image.title %></p>
+                    </section>
+                </section>
+            <% }); %>
+        </section>
         <% for(let i = 1; i <= 16; i++) { %>
             <figure class="galerija_slika">
                 <a href="#slika<%= i %>">
