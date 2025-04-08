@@ -19,10 +19,8 @@
             <li><a href="../files/grafikon.html">Grafikon</a></li>
         </ul>
     </nav>
-    <section class="galerija"> 
+    <h1>Galerija slika</h1>
         <section class="galerija"> 
-            <h1>Galerija slika</h1>
-            <section class="gallery">
                 <% images.forEach(image => { %>
                     <figure class="galerija_slika">
                         <a href="#slika-<%= image.id || images.indexOf(image) %>">
@@ -43,6 +41,8 @@
                 </section>
             <% }); %>
         </section>
+        
+        <section class="galerija"> 
         <% for(let i = 1; i <= 16; i++) { %>
             <figure class="galerija_slika">
                 <a href="#slika<%= i %>">
